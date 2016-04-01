@@ -71,7 +71,7 @@ function bones_rss_dashboard_widget() {
 			$limit = 0;
 			$items = 0;
 		} else {
-			$limit = $feed->get_item_quantity(7);                        // specify number of items
+			$limit = $feed->get_item_quantity(10);                        // specify number of items
 			$items = $feed->get_items(0, $limit);                        // create an array of items
 		}
 	}
@@ -138,7 +138,7 @@ you like.
 
 // Custom Backend Footer
 function bones_custom_admin_footer() {
-	_e( '<span id="footer-thankyou">Developed by <a href="http://yoursite.com" target="_blank">Your Site Name</a></span>. Built using <a href="http://themble.com/bones" target="_blank">Bones</a>.', 'bonestheme' );
+	_e( '<span id="footer-thankyou">Developed by <a href="http://yoursite.com" target="_blank">Your Site Name</a></span>. Built using <a href="https://github.com/denisahac/kalabera" target="_blank">Kalabera</a>.', 'bonestheme' );
 }
 
 // adding it to the admin area
