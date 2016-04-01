@@ -12,67 +12,67 @@
 */
 ?>
 
-<?php get_header(); ?>
+<?php get_header(); // Header ?>
+<!-- #content -->
+<div id="content">
+	<!-- #inner-content -->
+	<div id="inner-content">
+		<!-- #main -->
+		<main id="main" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
-			<div id="content">
+			<h1 class="archive-title"><?php post_type_archive_title(); ?></h1>
 
-				<div id="inner-content" class="wrap cf">
+				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-					<main id="main" class="m-all t-2of3 d-5of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+				<article id="post-<?php the_ID(); ?>" <?php post_class( 'article' ); ?> role="article">
 
-						<h1 class="archive-title h2"><?php post_type_archive_title(); ?></h1>
+					<header class="article__header">
 
-							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+						<h3 class="article__title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
+						<p class="article__meta"><?php
+							printf( __( 'Posted <time class="article__datetime" datetime="%1$s" itemprop="datePublished">%2$s</time> by <span class="article__author">%3$s</span>', 'bonestheme' ), get_the_time( 'Y-m-j' ), get_the_time( __( 'F jS, Y', 'bonestheme' ) ), get_author_posts_url( get_the_author_meta( 'ID' ) ));
+						?></p>
 
-							<article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article">
+					</header>
 
-								<header class="article-header">
+					<section class="article__content">
 
-									<h3 class="h2"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
-									<p class="byline vcard"><?php
-										printf( __( 'Posted <time class="updated" datetime="%1$s" itemprop="datePublished">%2$s</time> by <span class="author">%3$s</span>', 'bonestheme' ), get_the_time( 'Y-m-j' ), get_the_time( __( 'F jS, Y', 'bonestheme' ) ), get_author_posts_url( get_the_author_meta( 'ID' ) ));
-									?></p>
+						<?php the_excerpt(); ?>
 
-								</header>
+					</section>
 
-								<section class="entry-content cf">
+					<footer class="article__footer">
 
-									<?php the_excerpt(); ?>
+					</footer>
 
-								</section>
+				</article>
 
-								<footer class="article-footer">
+			<?php endwhile; ?>
 
-								</footer>
+				<?php bones_page_navi(); // Pagination ?>
 
-							</article>
+			<?php else : ?>
+			<!-- #post-not-found -->
+			<article id="post-not-found" class="article">
+				<header class="article__header">
+					<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
+				</header>
+				<section class="article__content">
+					<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
+				</section>
+				<footer class="article__footer">
+					<p><?php _e( 'This is the error message in the custom posty type archive template.', 'bonestheme' ); ?></p>
+				</footer>
+			</article> <!-- end of: #post-not-found -->
 
-							<?php endwhile; ?>
+			<?php endif; ?>
 
-									<?php bones_page_navi(); ?>
+		</main>
 
-							<?php else : ?>
+		<?php get_sidebar(); // Sidebar ?>
 
-									<article id="post-not-found" class="hentry cf">
-										<header class="article-header">
-											<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
-										</header>
-										<section class="entry-content">
-											<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
-										</section>
-										<footer class="article-footer">
-												<p><?php _e( 'This is the error message in the custom posty type archive template.', 'bonestheme' ); ?></p>
-										</footer>
-									</article>
+	</div> <!-- end of: #inner-content -->
 
-							<?php endif; ?>
+</div> <!-- end of: #content -->
 
-						</main>
-
-					<?php get_sidebar(); ?>
-
-				</div>
-
-			</div>
-
-<?php get_footer(); ?>
+<?php get_footer(); // Footer ?>

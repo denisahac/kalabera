@@ -1,74 +1,74 @@
-<?php get_header(); ?>
+<?php get_header(); // Header ?>
+<!-- #content -->
+<div id="content">
+	<!-- #inner-content -->
+	<div id="inner-content">
+		<!-- #main -->
+		<main id="main" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
-			<div id="content">
+			<?php
+			the_archive_title( '<h1 class="page-title">', '</h1>' );
+			the_archive_description( '<div class="taxonomy-description">', '</div>' );
+			?>
+			
+			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-				<div id="inner-content" class="wrap cf">
+			<article id="post-<?php the_ID(); ?>" <?php post_class( 'article' ); ?> role="article">
 
-						<main id="main" class="m-all t-2of3 d-5of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+				<header class="article__header">
 
-							<?php
-							the_archive_title( '<h1 class="page-title">', '</h1>' );
-							the_archive_description( '<div class="taxonomy-description">', '</div>' );
-							?>
-							
-							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+					<h3 class="article__title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
+					<p class="article__meta">
+						<?php printf( __( 'Posted', 'bonestheme' ).' %1$s %2$s',
+          		/* the time the post was published */
+					    '<time class="article__datetime" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>',
+							/* the author of the post */
+							'<span class="by">'.__('by', 'bonestheme').'</span> <span class="article__author" itemprop="author" itemscope itemptype="http://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
+						); ?>
+					</p>
 
-							<article id="post-<?php the_ID(); ?>" <?php post_class( 'cf' ); ?> role="article">
+				</header>
 
-								<header class="entry-header article-header">
+				<section class="article__content">
 
-									<h3 class="h2 entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
-									<p class="byline entry-meta vcard">
-										<?php printf( __( 'Posted', 'bonestheme' ).' %1$s %2$s',
-                  							     /* the time the post was published */
-                  							     '<time class="updated entry-time" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>',
-                       								/* the author of the post */
-                       								'<span class="by">'.__('by', 'bonestheme').'</span> <span class="entry-author author" itemprop="author" itemscope itemptype="http://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
-                    							); ?>
-									</p>
+					<?php the_post_thumbnail(); ?>
 
-								</header>
+					<?php the_excerpt(); ?>
 
-								<section class="entry-content cf">
+				</section>
 
-									<?php the_post_thumbnail( 'bones-thumb-300' ); ?>
+				<footer class="article__footer">
 
-									<?php the_excerpt(); ?>
+				</footer>
 
-								</section>
+			</article>
 
-								<footer class="article-footer">
+			<?php endwhile; ?>
 
-								</footer>
+				<?php bones_page_navi(); // Pagination ?>
 
-							</article>
+			<?php else : ?>
+			<!-- #post-not-found -->
+			<article id="post-not-found" class="article">
+				<header class="article__header">
+					<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
+				</header>
+				<section class="article__content">
+					<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
+				</section>
+				<footer class="article__footer">
+					<p><?php _e( 'This is the error message in the archive.php template.', 'bonestheme' ); ?></p>
+				</footer>
+			</article> <!-- end of: #post-not-found -->
 
-							<?php endwhile; ?>
+			<?php endif; ?>
 
-									<?php bones_page_navi(); ?>
+		</main> <!-- end of: #main -->
 
-							<?php else : ?>
+		<?php get_sidebar(); // Sidebar ?>
 
-									<article id="post-not-found" class="hentry cf">
-										<header class="article-header">
-											<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
-										</header>
-										<section class="entry-content">
-											<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
-										</section>
-										<footer class="article-footer">
-												<p><?php _e( 'This is the error message in the archive.php template.', 'bonestheme' ); ?></p>
-										</footer>
-									</article>
+	</div> <!-- end of: #inner-content -->
 
-							<?php endif; ?>
+</div> <!-- end of: #content -->
 
-						</main>
-
-					<?php get_sidebar(); ?>
-
-				</div>
-
-			</div>
-
-<?php get_footer(); ?>
+<?php get_footer(); // Footer ?>
