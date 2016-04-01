@@ -1,3 +1,11 @@
+/**
+ * File name: Gruntfile.js
+ * Description: Build tool
+ * Author: den.isahac <den.isahac@gmail.com>
+ * Author URI: https://github.com/denisahac
+ *
+ */
+
 module.exports = function(grunt) {
   // Initialize configuration
   grunt.initConfig({
@@ -6,10 +14,7 @@ module.exports = function(grunt) {
       // Syntactically Awesome Stylesheets
       sass: {
           options: {
-              loadPath: ['library/bower_components/foundation-sites/scss',
-                'library/bower_components/motion-ui',
-                'library/bower_components/font-awesome/scss',
-                'library/bower_components/slick-carousel/slick'],
+              // loadPath: ['THE_SASS_FOLDER'],
               noCache: true
           },
           dist: {
@@ -17,8 +22,7 @@ module.exports = function(grunt) {
                   style: 'compressed'
               },
               files: {
-                  'library/css/app.css': 'library/scss/app.scss',
-                  'library/css/login.css': 'library/scss/login.scss',
+                  // 'THE_CSS': 'THE_SASS',
               }
           }
       },
@@ -40,8 +44,11 @@ module.exports = function(grunt) {
           },
           // Library scripts
           scripts: {
+              options: {
+                ignores: ['library/js/*.min.js', 'library/js/libs/*.js']
+              },
               files: {
-                  src: ['library/js/app.js']
+                  src: ['library/js/*.js']
               }
           }
       },
@@ -53,39 +60,7 @@ module.exports = function(grunt) {
           sourceMap: true
         },
         files: {
-          'library/js/app.min.js': [
-              // Modernizr ↓
-              'library/js/libs/modernizr.custom.min.js',
-              // Smooth scroll ↓
-              'library/js/libs/smoothscroll.min.js',
-              // Console message ↓ 
-              'library/bower_components/console.message/console.message.min.js',
-              // Foundaton v6 ↓
-              'library/bower_components/foundation-sites/js/foundation.core.js', // Core
-              'library/bower_components/foundation-sites/js/foundation.util.triggers.js', // Util triggers
-              'library/bower_components/foundation-sites/js/foundation.util.box.js', // Util box
-              'library/bower_components/foundation-sites/js/foundation.util.keyboard.js', // Util keyboard
-              'library/bower_components/foundation-sites/js/foundation.util.nest.js', // Util nest
-              'library/bower_components/foundation-sites/js/foundation.util.mediaQuery.js', // Util media query
-              'library/bower_components/foundation-sites/js/foundation.dropdownMenu.js', // Dropdown menu
-              'library/bower_components/motion-ui/dist/motion-ui.min.js', // Motion UI
-              'library/bower_components/foundation-sites/js/foundation.responsiveToggle.js', // Responsive toggle
-              // Images loaded ↓
-              'library/bower_components/imagesLoaded/imagesloaded.pkgd.min.js',
-              // Slick carousel ↓
-              'library/bower_components/slick-carousel/slick/slick.min.js',
-              // App ↓
-              'library/js/app.js',
-              // jQuery form ↓
-              'library/bower_components/jquery.form/index.js',
-              // Contact form 7 ↓
-              'library/js/wpcf7.js'
-
-              ],
-          'library/js/login.min.js': [
-              // Console message ↓ 
-              'library/bower_components/console.message/console.message.min.js',
-              'library/js/login.js']
+          // 'THE_MIN_JS': ['THE_JS_FILE']
         }
       }
     },
@@ -117,21 +92,13 @@ module.exports = function(grunt) {
         options: {
           optimizationLevel: 7    
         },
-        uploads: {                         // Another target 
-          files: [{
-            expand: true,                  // Enable dynamic expansion 
-            cwd: '../../uploads',                   // Src matches are relative to this path 
-            src: ['**/*.{png,jpg,gif}'],   // Actual patterns to match 
-            dest: '../../uploads.min'                  // Destination path prefix 
-          }]
-        },
 
-        images: {                         // Another target 
+        images: {                          // Another target 
           files: [{
             expand: true,                  // Enable dynamic expansion 
-            cwd: 'library/images',                   // Src matches are relative to this path 
+            cwd: 'library/images',         // src matches are relative to this path 
             src: ['**/*.{png,jpg,gif}'],   // Actual patterns to match 
-            dest: 'library/images.min'                  // Destination path prefix 
+            dest: 'library/images'         // Destination path prefix 
           }]
         }
       },
@@ -141,19 +108,21 @@ module.exports = function(grunt) {
           dev: {
               options: {
                   watchTask: true,
-                  proxy: 'http://localhost/kizome/'
+                  // proxy: 'THE_HOST'
               },
               bsFiles: {
                   src: [
-                      'library/css/*.css',          // CSS
-                      'library/js/*.js',            // Javascripts
+                      // CSS
+                      'library/css/*.css',
+
+                      // Javascript
+                      'library/js/*.js',
                       
                       // Translation
-                      'library/lang/*.mo',
+                      'library/translations/*.mo',
                       
-                      'library/*.php',              // PHP files under library folder
-                      'post-formats/*.php',         // Post formats
-                      '*.php',                      // PHP 
+                      // PHP
+                      '*.php',
                       '**/*.php'
                   ]
               }
@@ -163,12 +132,12 @@ module.exports = function(grunt) {
       // Generate POT files
       pot: {
         options:{
-          text_domain: 'kyoto', //Your text domain. Produces my-text-domain.pot
-          dest: 'library/lang/', //directory to place the pot file
-          keywords: ['gettext', '__', '_e'], //functions to look for
+          text_domain: 'kalabera', // Your text domain. Produces my-text-domain.pot
+          dest: 'library/translations/', // directory to place the pot file
+          keywords: ['gettext', '__', '_e'], // functions to look for
         },
         files:{
-          src:  [ '**/*.php' ], //Parse all php files
+          src:  [ '**/*.php' ], // Parse all php files
           expand: true,
        }
       }
@@ -199,7 +168,7 @@ module.exports = function(grunt) {
       'autoprefixer',
       'jshint',
       'uglify',
-      //'imagemin'
+      'imagemin'
   ]);                                                   // Run this task on deployment with 'grunt deploy' command
   
   grunt.registerTask('translate', 'pot');               // Run this task to generate a new .pot file
