@@ -1,7 +1,7 @@
 /**
  * File name: Gruntfile.js
  * Description: Build tool
- * Author: den.isahac <den.isahac@gmail.com>
+ * Author: den.isahac
  * Author URI: https://github.com/denisahac
  *
  */
@@ -29,6 +29,7 @@ module.exports = function(grunt) {
       },
       
       // CSS3 autoprefixer
+      // https://www.npmjs.com/package/grunt-autoprefixer
       autoprefixer: {
           css: {
               src: 'library/css/*.css'
@@ -36,6 +37,7 @@ module.exports = function(grunt) {
       },
       
       // Javascript linter
+      // https://www.npmjs.com/package/grunt-contrib-jshint
       jshint: {
           // Grunt
           grunt: {
@@ -55,18 +57,20 @@ module.exports = function(grunt) {
       },
 
       // Javascript minifier
+      // https://www.npmjs.com/package/grunt-contrib-uglify
       uglify: {
-      scripts: {
-        options: {
-          sourceMap: true
-        },
-        files: {
-          // 'THE_MIN_JS': ['THE_JS_FILE']
+        scripts: {
+          options: {
+            sourceMap: true
+          },
+          files: {
+            // 'THE_MIN_JS': ['THE_JS_FILE']
+          }
         }
-      }
-    },
+      },
       
       // File watcher
+      // https://www.npmjs.com/package/grunt-contrib-watch
       watch: {
           // Grunt
           grunt: {
@@ -89,6 +93,7 @@ module.exports = function(grunt) {
       },
       
       // Image minifier
+      // https://www.npmjs.com/package/grunt-contrib-imagemin
       imagemin: {
         options: {
           optimizationLevel: 7    
@@ -104,7 +109,8 @@ module.exports = function(grunt) {
         }
       },
       
-      // Browser Sycn
+      // Browser Sync
+      // https://www.browsersync.io/docs/grunt/
       browserSync: {
           dev: {
               options: {
@@ -130,7 +136,8 @@ module.exports = function(grunt) {
           }
       },
 
-      // Generate POT files
+      // Generate POT file
+      // https://www.npmjs.com/package/grunt-pot
       pot: {
         options:{
           text_domain: 'kalabera', // Your text domain. Produces my-text-domain.pot
@@ -146,10 +153,10 @@ module.exports = function(grunt) {
   });
   
   // Load plugin(s)
-  grunt.loadNpmTasks('grunt-contrib-sass');       // SASS to CSS converter
+  grunt.loadNpmTasks('grunt-contrib-sass');             // SASS to CSS converter
   grunt.loadNpmTasks('grunt-autoprefixer');             // CSS3 autoprefixer
   grunt.loadNpmTasks('grunt-contrib-jshint');           // Javascript linter
-  grunt.loadNpmTasks('grunt-contrib-uglify');     // Javascript minifier
+  grunt.loadNpmTasks('grunt-contrib-uglify');           // Javascript minifier
   grunt.loadNpmTasks('grunt-contrib-watch');            // File watcher
   grunt.loadNpmTasks('grunt-contrib-imagemin');         // Image minifier
   grunt.loadNpmTasks('grunt-browser-sync');             // Browsing testing synchronization
