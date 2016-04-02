@@ -10,7 +10,7 @@
     "starter-theme",
     "wordpress-starter-theme",
   ],
-  "author": "Nordane Isahac <den.isahac@gmail.com> (https://github.com/denisahac)",
+  "author": "den.isahac",
   "license": "CDL",
   "devDependencies": {
     "grunt": "^0.4.5",

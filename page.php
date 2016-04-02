@@ -15,7 +15,7 @@
 					<h1 class="article__title" itemprop="headline"><?php the_title(); ?></h1>
 
 					<p class="article__meta">
-						<?php printf( __( 'Posted', 'bonestheme').' <time class="article__datetime" datetime="%1$s" itemprop="datePublished">%2$s</time> '.__( 'by',  'bonestheme').' <span class="article__author">%3$s</span>', get_the_time('Y-m-j'), get_the_time(get_option('date_format')), get_the_author_link( get_the_author_meta( 'ID' ) )); ?>
+						<?php printf( __( 'Posted', 'kalabera').' <time class="article__datetime" datetime="%1$s" itemprop="datePublished">%2$s</time> '.__( 'by',  'kalabera').' <span class="article__author">%3$s</span>', get_the_time('Y-m-j'), get_the_time(get_option('date_format')), get_the_author_link( get_the_author_meta( 'ID' ) )); ?>
 					</p>
 
 				</header> <?php // end article header ?>
@@ -38,7 +38,7 @@
 						 *
 						*/
 						wp_link_pages( array(
-							'before'      => '<div class="pagelinks"><span class="pagelinks__title">' . __( 'Pages:', 'bonestheme' ) . '</span>',
+							'before'      => '<div class="pagelinks"><span class="pagelinks__title">' . __( 'Pages:', 'kalabera' ) . '</span>',
 							'after'       => '</div>',
 							'link_before' => '<span>',
 							'link_after'  => '</span>',

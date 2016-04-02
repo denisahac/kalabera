@@ -12,6 +12,7 @@ module.exports = function(grunt) {
       pkg: grunt.file.readJSON('package.json'),
       
       // Syntactically Awesome Stylesheets
+      // https://github.com/gruntjs/grunt-contrib-sass
       sass: {
           options: {
               // loadPath: ['THE_SASS_FOLDER'],

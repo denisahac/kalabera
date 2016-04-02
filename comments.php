@@ -10,7 +10,7 @@ if ( post_password_required() ) {
 
 if ( have_comments() ) : ?>
 
-  <h3 id="comments-title" class="h2"><?php comments_number( __( '<span>No</span> Comments', 'bonestheme' ), __( '<span>One</span> Comment', 'bonestheme' ), __( '<span>%</span> Comments', 'bonestheme' ) );?></h3>
+  <h3 id="comments-title" class="h2"><?php comments_number( __( '<span>No</span> Comments', 'kalabera' ), __( '<span>One</span> Comment', 'kalabera' ), __( '<span>%</span> Comments', 'kalabera' ) );?></h3>
 
   <section class="comments">
     <?php
@@ -20,7 +20,7 @@ if ( have_comments() ) : ?>
         'avatar_size'       => 40,
         'callback'          => 'bones_comments',
         'type'              => 'all',
-        'reply_text'        => __('Reply', 'bonestheme'),
+        'reply_text'        => __('Reply', 'kalabera'),
         'page'              => '',
         'per_page'          => '',
         'reverse_top_level' => null,
@@ -31,13 +31,13 @@ if ( have_comments() ) : ?>
 
   <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
   	<nav class="navigation navigation__comments" role="navigation">
-    	<div class="navigation__comment navigation__comment-prev"><?php previous_comments_link( __( '&larr; Previous Comments', 'bonestheme' ) ); ?></div>
-    	<div class="navigation__comment navigation__comment--next"><?php next_comments_link( __( 'More Comments &rarr;', 'bonestheme' ) ); ?></div>
+    	<div class="navigation__comment navigation__comment-prev"><?php previous_comments_link( __( '&larr; Previous Comments', 'kalabera' ) ); ?></div>
+    	<div class="navigation__comment navigation__comment--next"><?php next_comments_link( __( 'More Comments &rarr;', 'kalabera' ) ); ?></div>
   	</nav>
   <?php endif; ?>
 
   <?php if ( ! comments_open() ) : ?>
-  	<p class="no-comments"><?php _e( 'Comments are closed.' , 'bonestheme' ); ?></p>
+  	<p class="no-comments"><?php _e( 'Comments are closed.' , 'kalabera' ); ?></p>
   <?php endif; ?>
 
 <?php endif; ?>

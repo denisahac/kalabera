@@ -30,7 +30,7 @@
 
 						<h3 class="article__title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
 						<p class="article__meta"><?php
-							printf( __( 'Posted <time class="article__datetime" datetime="%1$s" itemprop="datePublished">%2$s</time> by <span class="article__author">%3$s</span>', 'bonestheme' ), get_the_time( 'Y-m-j' ), get_the_time( __( 'F jS, Y', 'bonestheme' ) ), get_author_posts_url( get_the_author_meta( 'ID' ) ));
+							printf( __( 'Posted <time class="article__datetime" datetime="%1$s" itemprop="datePublished">%2$s</time> by <span class="article__author">%3$s</span>', 'kalabera' ), get_the_time( 'Y-m-j' ), get_the_time( __( 'F jS, Y', 'kalabera' ) ), get_author_posts_url( get_the_author_meta( 'ID' ) ));
 						?></p>
 
 					</header>
@@ -55,13 +55,13 @@
 			<!-- #post-not-found -->
 			<article id="post-not-found" class="article">
 				<header class="article__header">
-					<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
+					<h1><?php _e( 'Oops, Post Not Found!', 'kalabera' ); ?></h1>
 				</header>
 				<section class="article__content">
-					<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
+					<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'kalabera' ); ?></p>
 				</section>
 				<footer class="article__footer">
-					<p><?php _e( 'This is the error message in the custom posty type archive template.', 'bonestheme' ); ?></p>
+					<p><?php _e( 'This is the error message in the custom posty type archive template.', 'kalabera' ); ?></p>
 				</footer>
 			</article> <!-- end of: #post-not-found -->
 

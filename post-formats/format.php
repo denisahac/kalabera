@@ -22,11 +22,11 @@
 
                   <p class="article__meta">
 
-                    <?php printf( __( 'Posted', 'bonestheme' ).' %1$s %2$s',
+                    <?php printf( __( 'Posted', 'kalabera' ).' %1$s %2$s',
                        /* the time the post was published */
                        '<time class="article__datetime" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>',
                        /* the author of the post */
-                       '<span class="by">'.__( 'by', 'bonestheme' ).'</span> <span class="article__author" itemprop="author" itemscope itemptype="http://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
+                       '<span class="by">'.__( 'by', 'kalabera' ).'</span> <span class="article__author" itemprop="author" itemscope itemptype="http://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
                     ); ?>
 
                   </p>
@@ -51,7 +51,7 @@
                      *
                     */
                     wp_link_pages( array(
-                      'before'      => '<div class="pagelinks"><span class="pagelinks__title">' . __( 'Pages:', 'bonestheme' ) . '</span>',
+                      'before'      => '<div class="pagelinks"><span class="pagelinks__title">' . __( 'Pages:', 'kalabera' ) . '</span>',
                       'after'       => '</div>',
                       'link_before' => '<span>',
                       'link_after'  => '</span>',
@@ -61,9 +61,9 @@
 
                 <footer class="article__footer">
 
-                  <?php printf( __( 'filed under', 'bonestheme' ).': %1$s', get_the_category_list(', ') ); ?>
+                  <?php printf( __( 'filed under', 'kalabera' ).': %1$s', get_the_category_list(', ') ); ?>
 
-                  <?php the_tags( '<p class="tags"><span class="tags__title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>
+                  <?php the_tags( '<p class="tags"><span class="tags__title">' . __( 'Tags:', 'kalabera' ) . '</span> ', ', ', '</p>' ); ?>
 
                 </footer> <?php // end article footer ?>
 

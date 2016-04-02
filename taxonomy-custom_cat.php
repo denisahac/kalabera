@@ -20,7 +20,7 @@
 		<!-- #main -->
 		<main id="main" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
-			<h1 class="archive-title"><span><?php _e( 'Posts Categorized:', 'bonestheme' ); ?></span> <?php single_cat_title(); ?></h1>
+			<h1 class="archive-title"><span><?php _e( 'Posts Categorized:', 'kalabera' ); ?></span> <?php single_cat_title(); ?></h1>
 
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 			<!-- .article -->
@@ -34,14 +34,14 @@
 
 					<p class="byline vcard">
 						<?php
-							printf(__('Posted <time class="article__datetime" datetime="%1$s" itemprop="datePublished">%2$s</time> by <span class="article__author">%3$s</span> <span class="amp">&</span> filed under %4$s.', 'bonestheme'), get_the_time('Y-m-j'), get_the_time(__('F jS, Y', 'bonestheme')), bones_get_the_author_posts_link(), get_the_term_list( get_the_ID(), 'custom_cat', "", ", ", "" ));
+							printf(__('Posted <time class="article__datetime" datetime="%1$s" itemprop="datePublished">%2$s</time> by <span class="article__author">%3$s</span> <span class="amp">&</span> filed under %4$s.', 'kalabera'), get_the_time('Y-m-j'), get_the_time(__('F jS, Y', 'kalabera')), bones_get_the_author_posts_link(), get_the_term_list( get_the_ID(), 'custom_cat', "", ", ", "" ));
 						?>
 					</p>
 
 				</header>
 
 				<section class="article__content">
-					<?php the_excerpt( '<span class="read-more">' . __( 'Read More &raquo;', 'bonestheme' ) . '</span>' ); ?>
+					<?php the_excerpt( '<span class="read-more">' . __( 'Read More &raquo;', 'kalabera' ) . '</span>' ); ?>
 				</section>
 
 				<footer class="article__footer">
@@ -58,15 +58,15 @@
 			<!-- #post-not-found -->
 			<article id="post-not-found" class="article">
 				<header class="article__header">
-					<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
+					<h1><?php _e( 'Oops, Post Not Found!', 'kalabera' ); ?></h1>
 				</header>
 
 				<section class="article__content">
-					<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
+					<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'kalabera' ); ?></p>
 				</section>
 				
 				<footer class="article__footer">
-						<p><?php _e( 'This is the error message in the taxonomy-custom_cat.php template.', 'bonestheme' ); ?></p>
+						<p><?php _e( 'This is the error message in the taxonomy-custom_cat.php template.', 'kalabera' ); ?></p>
 				</footer>
 			</article> <!-- enf of: #post-not-found -->
 

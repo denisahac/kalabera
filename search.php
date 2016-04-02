@@ -5,7 +5,7 @@
 	<div id="inner-content">
     <!-- #main -->
 		<main id="main" role="main">
-			<h1 class="archive-title"><span><?php _e( 'Search Results for:', 'bonestheme' ); ?></span> <?php echo esc_attr(get_search_query()); ?></h1>
+			<h1 class="archive-title"><span><?php _e( 'Search Results for:', 'kalabera' ); ?></span> <?php echo esc_attr(get_search_query()); ?></h1>
 
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
@@ -18,7 +18,7 @@
             </h3>
 
 						<p class="article__meta">
-							<?php printf( __( 'Posted %1$s by %2$s', 'bonestheme' ),
+							<?php printf( __( 'Posted %1$s by %2$s', 'kalabera' ),
 						    /* the time the post was published */
 						    '<time class="article__datetime" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>',
 						    /* the author of the post */
@@ -29,17 +29,17 @@
 					</header>
 
 					<section class="article__content">
-						<?php the_excerpt( '<span class="read-more">' . __( 'Read more &raquo;', 'bonestheme' ) . '</span>' ); ?>
+						<?php the_excerpt( '<span class="read-more">' . __( 'Read more &raquo;', 'kalabera' ) . '</span>' ); ?>
 
 					</section>
 
 					<footer class="article__footer">
 
 						<?php if(get_the_category_list(', ') != ''): ?>
-  					<?php printf( __( 'Filed under: %1$s', 'bonestheme' ), get_the_category_list(', ') ); ?>
+  					<?php printf( __( 'Filed under: %1$s', 'kalabera' ), get_the_category_list(', ') ); ?>
   					<?php endif; ?>
 
- 					  <?php the_tags( '<p class="tags"><span class="tags__title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>
+ 					  <?php the_tags( '<p class="tags"><span class="tags__title">' . __( 'Tags:', 'kalabera' ) . '</span> ', ', ', '</p>' ); ?>
 
 					</footer> 
 
@@ -53,15 +53,15 @@
       <!-- #post-not-found -->
 			<article id="post-not-found" class="article">
 				<header class="article__header">
-					<h1><?php _e( 'Sorry, No Results.', 'bonestheme' ); ?></h1>
+					<h1><?php _e( 'Sorry, No Results.', 'kalabera' ); ?></h1>
 				</header>
 
 				<section class="article__content">
-					<p><?php _e( 'Try your search again.', 'bonestheme' ); ?></p>
+					<p><?php _e( 'Try your search again.', 'kalabera' ); ?></p>
 				</section>
 
 				<footer class="article__footer">
-					<p><?php _e( 'This is the error message in the search.php template.', 'bonestheme' ); ?></p>
+					<p><?php _e( 'This is the error message in the search.php template.', 'kalabera' ); ?></p>
 				</footer>
 			</article> <!-- end of: #post-not-found -->
 
