@@ -1,7 +1,7 @@
 {
   "name": "kalabera",
   "version": "1.0.0",
-  "description": "A WordPrss starter theme tailored according to my taste and is based in bones.",
+  "description": "A WordPress starter theme tailored according to my taste and is based in bones.",
   "main": "Gruntfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
