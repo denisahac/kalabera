@@ -2,7 +2,7 @@
 /* Welcome to Kalabera :)
 
 Filename: kalabera.php
-Desciption: This is the core Kalabera file where most of the main functions & features reside. 
+Desciption: This is the core Kalabera file where most of the main functions & features reside.
 If you have any custom functions, it's best to put them in the functions.php file.
 
 Author: den.isahac
@@ -122,7 +122,12 @@ function bones_scripts_and_styles() {
   global $wp_styles; // call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way
 
   if (!is_admin()) {
+		// debugging enabled
+		if(WP_DEBUG == true) {
 
+		} else {
+
+		}
 		// modernizr (without media query polyfill)
 		wp_register_script( 'bones-modernizr', get_stylesheet_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
 
@@ -294,7 +299,4 @@ function bones_excerpt_more($more) {
 	// edit here if you like
 	return '...  <a class="excerpt-read-more" href="'. get_permalink( $post->ID ) . '" title="'. __( 'Read ', 'kalabera' ) . esc_attr( get_the_title( $post->ID ) ).'">'. __( 'Read more &raquo;', 'kalabera' ) .'</a>';
 }
-
-
-
 ?>
