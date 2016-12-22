@@ -1,5 +1,5 @@
-		 <!-- end of: #footer -->
-      <footer id="footer">
+		 <!-- Footer -->
+      <footer itemscope itemtype="http://schema.org/WPFooter">
         <!-- #inner-footer -->
 				<div id="inner-footer">
 
@@ -19,10 +19,10 @@
 						)); ?>
 					</nav>
 
-					<p class="source-org copyright">&copy; <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?>.</p>
+					<p class="source-org copyright">&copy; <span itemprop="copyrightYear"><?php echo date('Y'); ?></span> <span itemprop="creator"><?php bloginfo( 'name' ); ?></span>.</p>
 
 				</div> <!-- end of: #inner-footer -->
-			</footer> <!-- end of: #footer -->
+			</footer> <!-- end of: Footer  -->
 		</div> <!-- end of: #container -->
 
 		<?php // all js scripts are loaded in library/bones.php ?>
