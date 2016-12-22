@@ -1,0 +1,27 @@
+{
+  "name": "kalabera-web-components",
+  "homepage": "https://github.com/denisahac/kalabera.git",
+  "authors": [
+    "den.isahac"
+  ],
+  "description": "A WordPress starter theme tailored according to my taste and was based in bones.",
+  "main": "",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "starter-theme",
+    "wordpress-starter-theme"
+  ],
+  "license": "CDL",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "console.message": "https://github.com/astoilkov/console.message.git#~0.1.0"
+  }
+}
