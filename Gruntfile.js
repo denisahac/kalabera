@@ -78,33 +78,49 @@ module.exports = function(grunt) {
                   reload: true
               },
               files: ['Gruntfile.js'],
-              tasks: ['jshint:grunt']
+              tasks: ['newer:jshint:grunt']
           },
           // Syntactically Awesome Stylesheets
           sass: {
               files: 'library/scss/**/*.scss',
-              tasks: ['sass', 'autoprefixer']
+              tasks: ['newer:sass', 'newer:autoprefixer']
           },
           // Library scripts
           scripts: {
               files: ['library/js/app.js'],
-              tasks: ['jshint:scripts']
+              tasks: ['newer:jshint:scripts']
           }
       },
       
       // Image minifier
-      // https://www.npmjs.com/package/grunt-contrib-imagemin
-      imagemin: {
+      // https://github.com/1000ch/grunt-image
+      image: {
         options: {
-          optimizationLevel: 7    
+          pngquant: true,
+          optipng: true,
+          zopflipng: true,
+          jpegRecompress: false,
+          jpegoptim: true,
+          mozjpeg: true,
+          gifsicle: true,
+          svgo: true
         },
 
-        images: {                          // Another target 
+        uploads: {                         // wp-content/uploads
           files: [{
-            expand: true,                  // Enable dynamic expansion 
-            cwd: 'library/images',         // src matches are relative to this path 
-            src: ['**/*.{png,jpg,gif}'],   // Actual patterns to match 
-            dest: 'library/images'         // Destination path prefix 
+            expand: true,                  // Enable dynamic expansion
+            cwd: '../../uploads',          // src matches are relative to this path
+            src: ['**/*.{png,jpg,gif,svg}'],   // Actual patterns to match
+            dest: '../../uploads.min'      // Destination path prefix
+          }]
+        },
+
+        images: {                          // theme images
+          files: [{
+            expand: true,                  // Enable dynamic expansion
+            cwd: 'library/images',         // src matches are relative to this path
+            src: ['**/*.{png,jpg,gif,svg}'],   // Actual patterns to match
+            dest: 'library/images.min'     // Destination path prefix
           }]
         }
       },
@@ -148,8 +164,22 @@ module.exports = function(grunt) {
           src:  [ '**/*.php' ], // Parse all php files
           expand: true,
        }
-      }
-      
+      },
+
+      // Convert .po file to .mo file
+      // https://github.com/axisthemes/grunt-potomo
+      potomo: {
+       i18n: {
+         files: [{
+           expand: true,
+           cwd: 'library/translations',
+           src: ['*.po'],
+           dest: 'library/translations',
+           ext: '.mo',
+           nonull: true
+         }]
+       }
+     }      
   });
   
   // Load plugin(s)
@@ -158,25 +188,29 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');           // Javascript linter
   grunt.loadNpmTasks('grunt-contrib-uglify');           // Javascript minifier
   grunt.loadNpmTasks('grunt-contrib-watch');            // File watcher
-  grunt.loadNpmTasks('grunt-contrib-imagemin');         // Image minifier
+  grunt.loadNpmTasks('grunt-image');                    // Image minifier
   grunt.loadNpmTasks('grunt-browser-sync');             // Browsing testing synchronization
   grunt.loadNpmTasks('grunt-pot');                      // Internationalization
+  grunt.loadNpmTasks('grunt-potomo');                   // .po to .mo file
+  grunt.loadNpmTasks('grunt-newer');                    // file validation
   
   // Register task(s)
   grunt.registerTask('build', [
-      'sass',
-      'autoprefixer',
-      'jshint',
+      'newer:sass',
+      'newer:autoprefixer',
+      'newer:jshint',
+      'newer:potomo',
       'browserSync',
       'watch'
   ]);                                                   // Run this task with 'grunt build' command
   
   grunt.registerTask('deploy', [
-      'sass',
-      'autoprefixer',
-      'jshint',
-      'uglify',
-      'imagemin'
+      'newer:sass',
+      'newer:autoprefixer',
+      'newer:jshint',
+      'newer:uglify',
+      'newer:potomo',
+      'newer:imagemin'
   ]);                                                   // Run this task on deployment with 'grunt deploy' command
   
   grunt.registerTask('translate', 'pot');               // Run this task to generate a new .pot file
