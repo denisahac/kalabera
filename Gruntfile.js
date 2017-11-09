@@ -7,6 +7,8 @@
  */
 
 module.exports = function(grunt) {
+   require("load-grunt-tasks")(grunt); // npm install --save-dev load-grunt-tasks
+
   // Initialize configuration
   grunt.initConfig({
       pkg: grunt.file.readJSON('package.json'),
@@ -34,6 +36,17 @@ module.exports = function(grunt) {
           css: {
               src: 'library/css/*.css'
           }
+      },
+
+      babel: {
+        options: {
+          sourceMap: true
+        },
+        dist: {
+          files: {
+            // 'dist': 'source'
+          }
+        }
       },
       
       // Javascript linter
@@ -181,18 +194,6 @@ module.exports = function(grunt) {
        }
      }      
   });
-  
-  // Load plugin(s)
-  grunt.loadNpmTasks('grunt-contrib-sass');             // SASS to CSS converter
-  grunt.loadNpmTasks('grunt-autoprefixer');             // CSS3 autoprefixer
-  grunt.loadNpmTasks('grunt-contrib-jshint');           // Javascript linter
-  grunt.loadNpmTasks('grunt-contrib-uglify');           // Javascript minifier
-  grunt.loadNpmTasks('grunt-contrib-watch');            // File watcher
-  grunt.loadNpmTasks('grunt-image');                    // Image minifier
-  grunt.loadNpmTasks('grunt-browser-sync');             // Browsing testing synchronization
-  grunt.loadNpmTasks('grunt-pot');                      // Internationalization
-  grunt.loadNpmTasks('grunt-potomo');                   // .po to .mo file
-  grunt.loadNpmTasks('grunt-newer');                    // file validation
   
   // Register task(s)
   grunt.registerTask('build', [

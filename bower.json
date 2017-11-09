@@ -13,7 +13,7 @@
     "starter-theme",
     "wordpress-starter-theme"
   ],
-  "license": "CDL",
+  "license": "GPLv2",
   "ignore": [
     "**/.*",
     "node_modules",
